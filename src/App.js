@@ -1,8 +1,15 @@
 import React from "react";
 import "./styles.css";
+import { useState } from "react";
 
 export default function App() {
+  const [holiday, setHoliday] = useState("");
+  const [date, setDate] = useState("");
+
   function handleSubmit(event) {
+    setHoliday(event.target.value);
+    setDate(event.target.value.reset());
+
     event.preventDefault();
   }
 
@@ -21,6 +28,8 @@ export default function App() {
           type="text"
           name="holiday"
           placeholder="e.g. Christmas"
+          value={(holiday, date)}
+          onChange={handleSubmit}
         />
         <label htmlFor="date">Date: </label>
         <input id="date" type="date" name="date" />
